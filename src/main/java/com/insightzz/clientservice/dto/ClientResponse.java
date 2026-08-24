@@ -11,6 +11,8 @@ public class ClientResponse {
 
     private Long id;
 
+    private Long clientId;
+
     private String clientName;
 
     private String clientLocation;

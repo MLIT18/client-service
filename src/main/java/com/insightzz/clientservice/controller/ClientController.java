@@ -1,6 +1,7 @@
 package com.insightzz.clientservice.controller;
 
 import com.insightzz.clientservice.dto.ClientCreateRequest;
+import com.insightzz.clientservice.dto.ClientDropdownResponse;
 import com.insightzz.clientservice.dto.ClientResponse;
 import com.insightzz.clientservice.dto.ClientUpdateRequest;
 import com.insightzz.clientservice.service.ClientService;
@@ -105,7 +106,8 @@ public class ClientController {
     // =====================================================
 
     @GetMapping("/names")
-    public ResponseEntity<List<String>> getClientNames() {
+    public ResponseEntity<List<ClientDropdownResponse>>
+    getClientNames() {
 
         return ResponseEntity.ok(
                 clientService.getAllClientNames()

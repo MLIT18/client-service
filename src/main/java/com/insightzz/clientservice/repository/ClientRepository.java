@@ -22,12 +22,16 @@ public interface ClientRepository
     Optional<Client> findByClientEmail(String clientEmail);
 
     @Query("""
-            SELECT DISTINCT c.clientName
-            FROM Client c
-            WHERE c.clientName IS NOT NULL
-            ORDER BY c.clientName
-            """)
-    List<String> findAllClientNames();
+        SELECT c
+        FROM Client c
+        WHERE c.id IN (
+            SELECT MIN(c2.id)
+            FROM Client c2
+            GROUP BY c2.clientName
+        )
+        ORDER BY c.clientName
+        """)
+    List<Client> findDistinctClientNames();
 
     List<Client> findByClientName(
             String clientName

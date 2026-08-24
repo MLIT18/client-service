@@ -1,6 +1,7 @@
 package com.insightzz.clientservice.service;
 
 import com.insightzz.clientservice.dto.ClientCreateRequest;
+import com.insightzz.clientservice.dto.ClientDropdownResponse;
 import com.insightzz.clientservice.dto.ClientResponse;
 import com.insightzz.clientservice.dto.ClientUpdateRequest;
 import com.insightzz.clientservice.entity.Client;
@@ -250,7 +251,9 @@ public class ClientServiceImpl
             Client client) {
 
         return ClientResponse.builder()
-                .id(client.getId())
+                .clientId(
+                        client.getId()
+                )
                 .clientName(
                         client.getClientName()
                 )
@@ -292,9 +295,18 @@ public class ClientServiceImpl
 
     @Override
     @Transactional(readOnly = true)
-    public List<String> getAllClientNames() {
+    public List<ClientDropdownResponse> getAllClientNames() {
 
-        return clientRepository.findAllClientNames();
+        return clientRepository
+                .findDistinctClientNames()
+                .stream()
+                .map(client ->
+                        new ClientDropdownResponse(
+                                client.getId(),
+                                client.getClientName()
+                        )
+                )
+                .toList();
     }
 
 //    @Override

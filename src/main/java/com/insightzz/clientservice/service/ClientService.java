@@ -1,6 +1,7 @@
 package com.insightzz.clientservice.service;
 
 import com.insightzz.clientservice.dto.ClientCreateRequest;
+import com.insightzz.clientservice.dto.ClientDropdownResponse;
 import com.insightzz.clientservice.dto.ClientResponse;
 import com.insightzz.clientservice.dto.ClientUpdateRequest;
 
@@ -33,7 +34,7 @@ public interface ClientService {
     // CLIENT DROPDOWN
     // =====================================================
 
-    List<String> getAllClientNames();
+    //List<String> getAllClientNames();
 
     // =====================================================
     // LOCATION DROPDOWN
@@ -42,4 +43,6 @@ public interface ClientService {
     List<String> getLocationsByClientName(
             String clientName
     );
+
+    List<ClientDropdownResponse> getAllClientNames();
 }
