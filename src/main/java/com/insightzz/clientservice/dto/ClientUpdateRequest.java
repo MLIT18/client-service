@@ -35,5 +35,10 @@ public class ClientUpdateRequest {
     )
     private String clientEmail;
 
+    @Size(
+            max = 10,
+            message = "Client Mob No cannot exceed 10 characters"
+    )
+    private String clientMobNo;
     //private String status;
 }

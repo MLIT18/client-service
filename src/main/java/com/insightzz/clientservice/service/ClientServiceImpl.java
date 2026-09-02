@@ -49,10 +49,11 @@ public class ClientServiceImpl
                 .clientLocation(
                         request.getClientLocation()
                 )
+                .clientState(request.getClientState())
                 .clientSpocName(
                         request.getClientSpocName()
                 )
-                .clientSpocDesignation(request.getClientSpocDesignation())
+                .clientMobNo(request.getClientMobNo())
                 .clientEmail(
                         request.getClientEmail()
                 )
@@ -78,14 +79,14 @@ public class ClientServiceImpl
 
     @Override
     @Transactional(readOnly = true)
-    public ClientResponse getClientById(Long id) {
+    public ClientResponse getClientById(Long clientId) {
 
         Client client =
-                clientRepository.findById(id)
+                clientRepository.findById(clientId)
                         .orElseThrow(() ->
                                 new ClientNotFoundException(
                                         "Client not found with id: "
-                                                + id
+                                                + clientId
                                 )
                         );
 
@@ -196,6 +197,13 @@ public class ClientServiceImpl
             );
         }
 
+        if (request.getClientMobNo() != null) {
+
+            client.setClientMobNo(
+                    request.getClientMobNo()
+            );
+        }
+
 
         // -----------------------------------------------------
         // STATUS
@@ -258,12 +266,12 @@ public class ClientServiceImpl
                         client.getClientName()
                 )
                 .clientLocation(
-                        client.getClientLocation()
+                        client.getClientLocation() + ", " + client.getClientState()
                 )
                 .clientSpocName(
                         client.getClientSpocName()
                 )
-                .clientSpocDesignation(client.getClientSpocDesignation())
+                .clientMobNo(client.getClientMobNo())
                 .clientEmail(
                         client.getClientEmail()
                 )

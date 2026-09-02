@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Builder
 public class ClientResponse {
 
-    private Long id;
+   // private Long id;
 
     private Long clientId;
 
@@ -19,7 +19,7 @@ public class ClientResponse {
 
     private String clientSpocName;
 
-    private String clientSpocDesignation;
+    private String clientMobNo;
 
     private String clientEmail;
 

@@ -33,7 +33,18 @@ public class ClientCreateRequest {
     )
     private String clientLocation;
 
-    @NotBlank(message = "Client SPOC name is required")
+    @NotBlank(message = "Client State is required")
+    @Size(
+            max = 255,
+            message = "Client State cannot exceed 255 characters"
+    )
+    @Pattern(
+            regexp = "^[A-Za-z_]+$",
+            message = "Client State name can contain only alphabets and underscore (_), no spaces allowed"
+    )
+    private String clientState;
+
+    //@NotBlank(message = "Client SPOC name is required")
     @Size(
             max = 100,
             message = "Client SPOC name cannot exceed 100 characters"
@@ -49,12 +60,13 @@ public class ClientCreateRequest {
     )
     private String clientEmail;
 
-    @NotBlank(message = "Client SPOC Designation is required")
     @Size(
-            max = 100,
-            message = "Client SPOC Designation cannot exceed 100 characters"
+            max = 10,
+            message = "Client Mob No cannot exceed 10 characters"
     )
-    private String clientSpocDesignation;
+
+    private String clientMobNo;
+
 
 
   //  private String status;

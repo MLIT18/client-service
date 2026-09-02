@@ -14,7 +14,7 @@ public interface ClientService {
     );
 
     ClientResponse getClientById(
-            Long id
+            Long clientId
     );
 
     List<ClientResponse> getAllClients();

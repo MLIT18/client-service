@@ -33,6 +33,13 @@ public class Client {
     private String clientLocation;
 
     @Column(
+            name = "client_state",
+            nullable = false,
+            length = 255
+    )
+    private String clientState;
+
+    @Column(
             name = "client_spoc_name",
             nullable = false,
             length = 100
@@ -40,11 +47,11 @@ public class Client {
     private String clientSpocName;
 
     @Column(
-            name = "client_spoc_designation",
+            name = "client_mob_no",
             nullable = false,
-            length = 100
+            length = 10
     )
-    private String clientSpocDesignation;
+    private String clientMobNo;
 
     @Column(
             name = "client_email",

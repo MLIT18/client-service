@@ -58,12 +58,12 @@ public class ClientController {
     // =========================================================
 
     @PreAuthorize("hasAuthority('CLIENT_READ')")
-    @GetMapping("/id/{id}")
+    @GetMapping("/id/{clientId}")
     public ResponseEntity<ClientResponse> getClientById(
-            @PathVariable Long id) {
+            @PathVariable Long clientId) {
 
         return ResponseEntity.ok(
-                clientService.getClientById(id)
+                clientService.getClientById(clientId)
         );
     }
 
